@@ -2,6 +2,7 @@
 
 var Album = require('../models/album');
 var moment = require('moment');
+var id3 = require('id3js');
 
 exports.index = function(req, res){
   Album.findAll(function(albums){
@@ -11,8 +12,7 @@ exports.index = function(req, res){
 
 exports.show = function(req, res){
   Album.findById(req.params.id, function(album){
-    album.parseSong(album.songs);
-    res.render('albums/show', {moment:moment, album:album, title: album.title});
+    res.render('albums/show', {id3:id3, moment:moment, album:album, title: album.title});
   });
 };
 
