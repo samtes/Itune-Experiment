@@ -38,6 +38,7 @@ html(class='no-js', lang='en')
     .row
       .small-6.columns
         each song in album.songs
+          .tracks='Track number = ' + ((parseInt(album.songs.indexOf(song)))+1) + ' ('+ song +')'
           .songs
             audio(controls='controls' src=song)
               code audio

@@ -62,29 +62,18 @@ describe('Tunes', function(){
   });
 /*
   describe('#addSong', function(){
-    var s1;
 
-    beforeEach(function(done){
-      s1 = new Song({title:'Test A', artist:'Node Audio'});
-      var oldname = __dirname + '/../fixtures/song-copy1.mp3';
-      s1.addSong(oldname);
-      s1.insert(function(){
-        done();
-      });
-    });
-
-    it('should add a song to the Album', function(done){
-      var songid = s1._id.toString();
-      Album.findById(ALBUM ID NEEDED, function(album){
-        album.addSong(songid, function(album){
-          expect(album.songs).to.have.length(1);
-          //expect(album.songs[0]).to.equal('/img/testa/france.jpg');
-          done();
-        });
+  it('should add a song to the Album', function(done){
+    var a1 = new Album({title:'Test A', artist:'Aimee', releaseyear:'2012-03-25'});
+    var oldname = __dirname + '/../fixtures/song-copy1.mp3';
+    a1.addSong(oldname);
+    a1.update(function(){
+      expect(album.songs).to.have.length(1);
+      done();
       });
     });
   });
-*/
+
 
   describe('#insert', function(){
     it('should insert a new Album into Mongo', function(done){
@@ -118,10 +107,10 @@ describe('Tunes', function(){
       var id = a1._id.toString();
       Album.findById(id, function(album){
         album.releasedate = new Date('1983-05-12');
-        //var photo = __dirname + '/../fixtures/euro-copy2.jpg';
-        //album.addPhoto(photo, 'france.jpg');
-        //expect(album.photos).to.have.length(1);
-        //expect(album.photos[0]).to.equal('/img/testa/france.jpg');
+        var photo = __dirname + '/../fixtures/euro-copy2.jpg';
+        album.addPhoto(photo, 'france.jpg');
+        expect(album.photos).to.have.length(1);
+        expect(album.photos[0]).to.equal('/img/testa/france.jpg');
         album.update(function(err, count){
           expect(count).to.equal(1);
           done();
@@ -168,5 +157,5 @@ describe('Tunes', function(){
       });
     });
   });
-
+*/
 });

@@ -11,6 +11,7 @@ exports.index = function(req, res){
 
 exports.show = function(req, res){
   Album.findById(req.params.id, function(album){
+    album.parseSong(album.songs);
     res.render('albums/show', {moment:moment, album:album, title: album.title});
   });
 };
